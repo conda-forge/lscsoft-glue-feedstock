@@ -1,6 +1,6 @@
 {% set name = "lscsoft-glue" %}
-{% set version = "1.59.3" %}
-{% set sha256 = "a0ddf26fbb45a19b046510e630b6d39a1798f4cd89ba883a38b4f2f491d39d2b" %}
+{% set version = "1.60.0" %}
+{% set sha256 = "c51a5703e33c8ca244ab50723dd5bf3984c3c6383838e77e9dd451678024a2a6" %}
 
 package:
   name: {{ name }}
