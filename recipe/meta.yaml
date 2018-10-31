@@ -1,6 +1,6 @@
 {% set name = "lscsoft-glue" %}
-{% set version = "1.59.3" %}
-{% set sha256 = "a0ddf26fbb45a19b046510e630b6d39a1798f4cd89ba883a38b4f2f491d39d2b" %}
+{% set version = "1.60.0" %}
+{% set sha256 = "c51a5703e33c8ca244ab50723dd5bf3984c3c6383838e77e9dd451678024a2a6" %}
 
 package:
   name: {{ name }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1000
+  number: 0
   script: python -m pip install --no-deps --ignore-installed .
   skip: true  # [win]
 
@@ -28,12 +28,15 @@ requirements:
     - six
     - pyopenssl
     - numpy
+    - ligo-segments
 
 test:
   imports:
     - glue
+    - glue.iterutils
+    - glue.lal
     - glue.ligolw
-    - glue.segments
+    - glue.pipeline
 
 about:
   home: https://git.ligo.org/lscsoft/{{ name }}

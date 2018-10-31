@@ -14,8 +14,8 @@ Summary: Grid LSC User Engine
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/lscsoft-glue-regro-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/lscsoft-glue-regro-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/lscsoft-glue-regro-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/lscsoft-glue-regro-feedstock)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/lscsoft-glue-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/lscsoft-glue-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/lscsoft-glue-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/lscsoft-glue-feedstock)
 ![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
