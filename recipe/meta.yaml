@@ -12,8 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  number: 1
   skip: true  # [win]
 
 requirements:
@@ -37,6 +36,10 @@ test:
     - glue.lal
     - glue.ligolw
     - glue.pipeline
+  commands:
+    # check links
+    - conda inspect linkages -p ${PREFIX} ${PKG_NAME}  # [not win]
+    - conda inspect objects -p ${PREFIX} ${PKG_NAME}  # [osx]
 
 about:
   home: https://git.ligo.org/lscsoft/{{ name }}
