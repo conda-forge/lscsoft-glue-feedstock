@@ -20,7 +20,7 @@ Current build status
 
 [![Linux](https://img.shields.io/circleci/project/github/conda-forge/lscsoft-glue-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/lscsoft-glue-feedstock)
 [![OSX](https://img.shields.io/travis/conda-forge/lscsoft-glue-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/lscsoft-glue-feedstock)
-![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/lscsoft-glue-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/lscsoft-glue-feedstock/branch/master)
 
 Current release info
 ====================
