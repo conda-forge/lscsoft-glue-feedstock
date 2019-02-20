@@ -1,6 +1,6 @@
 {% set name = "lscsoft-glue" %}
-{% set version = "1.60.0" %}
-{% set sha256 = "c51a5703e33c8ca244ab50723dd5bf3984c3c6383838e77e9dd451678024a2a6" %}
+{% set version = "2.0.0" %}
+{% set sha256 = "9bdfaebe4c921d83d1e3d1ca24379a644665e9d7530e7070665f387767c66923" %}
 
 package:
   name: {{ name }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
 
 requirements:
