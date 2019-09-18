@@ -9,20 +9,17 @@ Feedstock license: BSD 3-Clause
 
 Summary: Grid LSC User Engine
 
+Glue is a collection of utilities for running data analysis pipelines
+for online and offline analysis as well as accessing various grid
+utilities.  It also provides the infrastructure for the segment
+database.
 
 
 Current build status
 ====================
 
 
-<table><tr>
-    <td>Appveyor</td>
-    <td>
-      <a href="https://ci.appveyor.com/project/conda-forge/lscsoft-glue-feedstock/branch/master">
-        <img alt="windows" src="https://img.shields.io/appveyor/ci/conda-forge/lscsoft-glue-feedstock/master.svg?label=Windows">
-      </a>
-    </td>
-  </tr>
+<table>
     
   <tr>
     <td>Azure</td>
