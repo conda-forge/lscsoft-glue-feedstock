@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 3
+  number: 4
   ignore_run_exports:
     - m2w64-gcc-libs  # [win]
 
@@ -30,7 +30,7 @@ requirements:
     - numpy
     - pyopenssl
     - python
-    - python-pegasus-wms
+    - python-pegasus-wms 4
     - six
 
 test:
