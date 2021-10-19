@@ -1,13 +1,15 @@
 About lscsoft-glue
 ==================
 
-Home: https://git.ligo.org/lscsoft/lscsoft-glue
+Home: https://git.ligo.org/lscsoft/glue.git
 
-Package license: GPLv3
+Package license: GPL-3.0-or-later
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/lscsoft-glue-feedstock/blob/master/LICENSE.txt)
 
 Summary: Grid LSC User Engine
+
+Documentation: https://lscsoft.docs.ligo.org/glue/
 
 Glue is a collection of utilities for running data analysis pipelines
 for online and offline analysis as well as accessing various grid
@@ -267,5 +269,6 @@ Feedstock Maintainers
 =====================
 
 * [@duncanmmacleod](https://github.com/duncanmmacleod/)
+* [@robertbruntz](https://github.com/robertbruntz/)
 * [@rpfisher](https://github.com/rpfisher/)
 
