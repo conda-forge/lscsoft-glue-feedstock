@@ -39,11 +39,11 @@ requirements:
 
 test:
   requires:
-    - make
-    - matplotlib-base
+    - make  # [not win]
+    - matplotlib-base  # [not win]
     - pip
   source_files:
-    - test/
+    - test/  # [not win]
   imports:
     - glue
     - glue.gpstime
@@ -60,12 +60,7 @@ test:
     # check requirements
     - python -m pip check
     # attempt to run some tests
-    - make -C test/ -j{{ CPU_COUNT }} check
-          -o lal_verify
-          -o ligolw_test01
-          -o test_ligolw_lsctables
-          -o test_ligolw_table
-          -o test_ligolw_utils_segments
+    - make -C test/ -j{{ CPU_COUNT }} check -o lal_verify -o ligolw_test01 -o test_ligolw_lsctables -o test_ligolw_table -o test_ligolw_utils_segments  # [not win]
 
 about:
   home: https://git.ligo.org/lscsoft/glue.git
