@@ -1,0 +1,24 @@
+diff --git a/setup.py b/setup.py
+index a5dbd6ab..3b66f443 100644
+--- a/setup.py
++++ b/setup.py
+@@ -55,19 +55,6 @@ def write_build_info():
+ 
+ class glue_build_py(build_py.build_py):
+   def run(self):
+-    # create the git_version module
+-    log.info("Generating glue/git_version.py")
+-    try:
+-      write_build_info()
+-    except gvcsi.GitInvocationError:
+-      if os.path.exists("glue/git_version.py"):
+-        # We're probably being built from a release tarball; don't overwrite
+-        log.info("Not in git checkout or cannot find git executable; "\
+-            "using existing glue/git_version.py")
+-      else:
+-        log.error("Not in git checkout or cannot find git executable "\
+-            "and no glue/git_version.py. Exiting.")
+-        sys.exit(1)
+ 
+     # resume normal build procedure
+     build_py.build_py.run(self)

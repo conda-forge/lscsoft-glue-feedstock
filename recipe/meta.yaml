@@ -1,15 +1,16 @@
 {% set name = "lscsoft-glue" %}
 {% set version = "2.0.0" %}
-{% set sha256 = "9bdfaebe4c921d83d1e3d1ca24379a644665e9d7530e7070665f387767c66923" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 9bdfaebe4c921d83d1e3d1ca24379a644665e9d7530e7070665f387767c66923
+  patches:
+    # don't attempt to generate git_version.py, we have one
+    - no-git_version.patch
 
 build:
   number: 4
@@ -18,10 +19,11 @@ build:
 
 requirements:
   build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('c') }}  # [unix]
     - {{ compiler('m2w64_c') }}  # [win]
+    # extras for cross compilation
+    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
+    - python                              # [build_platform != target_platform]
   host:
     - libpython  # [win]
     - pip
@@ -36,6 +38,12 @@ requirements:
     - six
 
 test:
+  requires:
+    - make
+    - matplotlib-base
+    - pip
+  source_files:
+    - test/
   imports:
     - glue
     - glue.gpstime
@@ -49,11 +57,20 @@ test:
     - glue.utils
     - glue.workflow
   commands:
-    # check links
+    # check requirements
+    - python -m pip check
+    # attempt to run some tests
+    - make -C test/ -j{{ CPU_COUNT }} check
+          -o lal_verify
+          -o ligolw_test01
+          -o test_ligolw_lsctables
+          -o test_ligolw_table
+          -o test_ligolw_utils_segments
 
 about:
-  home: https://git.ligo.org/lscsoft/{{ name }}
-  license: GPLv3
+  home: https://git.ligo.org/lscsoft/glue.git
+  doc_url: https://lscsoft.docs.ligo.org/glue/
+  license: GPL-3.0-or-later
   license_family: GPL
   license_file: LICENSE
   summary: Grid LSC User Engine
@@ -66,4 +83,5 @@ about:
 extra:
   recipe-maintainers:
     - duncanmmacleod
+    - robertbruntz
     - rpfisher
