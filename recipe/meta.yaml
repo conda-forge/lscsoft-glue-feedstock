@@ -13,9 +13,10 @@ source:
     - no-git_version.patch
 
 build:
-  number: 4
+  number: 5
   ignore_run_exports:
     - m2w64-gcc-libs  # [win]
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
