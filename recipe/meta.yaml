@@ -11,6 +11,8 @@ source:
   patches:
     # don't attempt to generate git_version.py, we have one
     - no-git_version.patch
+    # https://git.ligo.org/kipp.cannon/python-ligo-lw/-/issues/22
+    - pyunicode.patch
 
 build:
   number: 6
