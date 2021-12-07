@@ -11,9 +11,11 @@ source:
   patches:
     # don't attempt to generate git_version.py, we have one
     - no-git_version.patch
+    # https://git.ligo.org/kipp.cannon/python-ligo-lw/-/issues/22
+    - pyunicode.patch
 
 build:
-  number: 5
+  number: 6
   ignore_run_exports:
     - m2w64-gcc-libs  # [win]
   script: {{ PYTHON }} -m pip install . -vv
@@ -40,11 +42,7 @@ requirements:
 
 test:
   requires:
-    - make  # [not win]
-    - matplotlib-base  # [not win]
     - pip
-  source_files:
-    - test/  # [not win]
   imports:
     - glue
     - glue.gpstime
@@ -60,8 +58,6 @@ test:
   commands:
     # check requirements
     - python -m pip check
-    # attempt to run some tests
-    - make -C test/ -j{{ CPU_COUNT }} check -o lal_verify -o ligolw_test01 -o test_ligolw_lsctables -o test_ligolw_table -o test_ligolw_utils_segments  # [not win]
 
 about:
   home: https://git.ligo.org/lscsoft/glue.git
