@@ -1,5 +1,5 @@
 {% set name = "lscsoft-glue" %}
-{% set version = "2.0.0" %}
+{% set version = "3.0.1" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9bdfaebe4c921d83d1e3d1ca24379a644665e9d7530e7070665f387767c66923
+  sha256: a242f29537f18957dbb07e6d9d20d7ebddc86c8325d4fa9e192cfa61a7c6ffbd
   patches:
     # don't attempt to generate git_version.py, we have one
     - no-git_version.patch
@@ -15,7 +15,7 @@ source:
     - pyunicode.patch
 
 build:
-  number: 6
+  number: 0
   ignore_run_exports:
     - m2w64-gcc-libs  # [win]
   script: {{ PYTHON }} -m pip install . -vv
