@@ -48,7 +48,7 @@ test:
     - glue.iterutils
     - glue.lal
     - glue.ldbd
-    - glue.pidfile
+    - glue.pidfile  # [not win]
     - glue.pipeline
     - glue.segmentdb
   commands:
@@ -57,8 +57,8 @@ test:
     # run some tests
     - python test/iterutils_verify.py
     - python test/lal_verify.py
-    - python test/test_ldbd.py
-    - python test/test_pidfile.py
+    - python test/test_ldbd.py  # [not win]
+    - python test/test_pidfile.py  # [not win]
     - python test/test_pipeline.py
 
 about:
