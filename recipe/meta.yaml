@@ -8,11 +8,6 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: a242f29537f18957dbb07e6d9d20d7ebddc86c8325d4fa9e192cfa61a7c6ffbd
-  patches:
-    # don't attempt to generate git_version.py, we have one
-    - no-git_version.patch
-    # https://git.ligo.org/kipp.cannon/python-ligo-lw/-/issues/22
-    - pyunicode.patch
 
 build:
   number: 0
