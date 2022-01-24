@@ -37,22 +37,27 @@ requirements:
 
 test:
   requires:
+    - matplotlib-base
     - pip
+  source_files:
+    - test/
   imports:
     - glue
-    - glue.gpstime
     - glue.iterutils
     - glue.lal
-    - glue.ligolw
-    - glue.ligolw.ilwd
-    - glue.ligolw.tokenizer
+    - glue.ldbd
+    - glue.pidfile
     - glue.pipeline
-    - glue.text_progress_bar
-    - glue.utils
-    - glue.workflow
+    - glue.segmentdb
   commands:
     # check requirements
     - python -m pip check
+    # run some tests
+    - python test/iterutils_verify.py
+    - python test/lal_verify.py
+    - python test/test_ldbd.py
+    - python test/test_pidfile.py
+    - python test/test_pipeline.py
 
 about:
   home: https://git.ligo.org/lscsoft/glue.git
