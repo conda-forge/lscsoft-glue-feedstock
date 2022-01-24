@@ -1,5 +1,5 @@
 {% set name = "lscsoft-glue" %}
-{% set version = "2.0.0" %}
+{% set version = "3.0.1" %}
 
 package:
   name: {{ name }}
@@ -7,15 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9bdfaebe4c921d83d1e3d1ca24379a644665e9d7530e7070665f387767c66923
-  patches:
-    # don't attempt to generate git_version.py, we have one
-    - no-git_version.patch
-    # https://git.ligo.org/kipp.cannon/python-ligo-lw/-/issues/22
-    - pyunicode.patch
+  sha256: a242f29537f18957dbb07e6d9d20d7ebddc86c8325d4fa9e192cfa61a7c6ffbd
 
 build:
-  number: 6
+  number: 0
   ignore_run_exports:
     - m2w64-gcc-libs  # [win]
   script: {{ PYTHON }} -m pip install . -vv
@@ -31,33 +26,40 @@ requirements:
     - libpython  # [win]
     - pip
     - python
-    - setuptools
+    - setuptools  # [not win]
+    # work around missing ucrt library
+    - setuptools <59.2.0  # [win]
   run:
     - ligo-segments
     - numpy
     - pyopenssl
     - python
-    - python-pegasus-wms 4
+    - pyrxp
     - six
 
 test:
   requires:
+    - matplotlib-base
     - pip
+  source_files:
+    - test/
   imports:
     - glue
-    - glue.gpstime
     - glue.iterutils
     - glue.lal
-    - glue.ligolw
-    - glue.ligolw.ilwd
-    - glue.ligolw.tokenizer
+    - glue.ldbd
+    - glue.pidfile  # [not win]
     - glue.pipeline
-    - glue.text_progress_bar
-    - glue.utils
-    - glue.workflow
+    - glue.segmentdb
   commands:
     # check requirements
     - python -m pip check
+    # run some tests
+    - python test/iterutils_verify.py
+    - python test/lal_verify.py
+    - python test/test_ldbd.py  # [not win]
+    - python test/test_pidfile.py  # [not win]
+    - python test/test_pipeline.py
 
 about:
   home: https://git.ligo.org/lscsoft/glue.git
