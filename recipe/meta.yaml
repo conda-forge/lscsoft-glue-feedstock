@@ -32,7 +32,7 @@ requirements:
     - numpy
     - pyopenssl
     - python
-    - python-pegasus-wms 4
+    - pyrxp
     - six
 
 test:
