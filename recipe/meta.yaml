@@ -10,7 +10,7 @@ source:
   sha256: a242f29537f18957dbb07e6d9d20d7ebddc86c8325d4fa9e192cfa61a7c6ffbd
 
 build:
-  number: 0
+  number: 1
   ignore_run_exports:
     - m2w64-gcc-libs  # [win]
   script: {{ PYTHON }} -m pip install . -vv
