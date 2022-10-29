@@ -26,9 +26,7 @@ requirements:
     - libpython  # [win]
     - pip
     - python
-    - setuptools  # [not win]
-    # work around missing ucrt library
-    - setuptools <59.2.0  # [win]
+    - setuptools
   run:
     - ligo-segments
     - numpy
