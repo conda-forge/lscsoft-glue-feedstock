@@ -1,0 +1,68 @@
+From a9a823a259b8ab7202c09a0b6ffc4054d8a4498a Mon Sep 17 00:00:00 2001
+From: "duncan.macleod" <duncan.macleod@ligo.org>
+Date: Fri, 13 Oct 2023 10:53:53 +0100
+Subject: [PATCH 2/2] glue.ligolw: fix C extension object init
+
+for Python 3.12
+---
+ glue/ligolw/ilwd.c                 | 2 +-
+ glue/ligolw/tokenizer.RowBuilder.c | 2 +-
+ glue/ligolw/tokenizer.RowDumper.c  | 2 +-
+ glue/ligolw/tokenizer.Tokenizer.c  | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/glue/ligolw/ilwd.c b/glue/ligolw/ilwd.c
+index cc3fd12d..ee415d32 100644
+--- a/glue/ligolw/ilwd.c
++++ b/glue/ligolw/ilwd.c
+@@ -388,7 +388,7 @@ static struct PyMethodDef methods[] = {
+ 
+ 
+ PyTypeObject ligolw_ilwdchar_Type = {
+-	PyObject_HEAD_INIT(NULL)
++	PyVarObject_HEAD_INIT(NULL, 0)
+ 	.tp_basicsize = sizeof(ligolw_ilwdchar),
+ 	.tp_name = MODULE_NAME ".ilwdchar",
+ 	.tp_doc =
+diff --git a/glue/ligolw/tokenizer.RowBuilder.c b/glue/ligolw/tokenizer.RowBuilder.c
+index be72cc70..767c0971 100644
+--- a/glue/ligolw/tokenizer.RowBuilder.c
++++ b/glue/ligolw/tokenizer.RowBuilder.c
+@@ -237,7 +237,7 @@ static struct PyMethodDef methods[] = {
+ 
+ 
+ PyTypeObject ligolw_RowBuilder_Type = {
+-	PyObject_HEAD_INIT(NULL)
++	PyVarObject_HEAD_INIT(NULL, 0)
+ 	.tp_basicsize = sizeof(ligolw_RowBuilder),
+ 	.tp_dealloc = __del__,
+ 	.tp_doc =
+diff --git a/glue/ligolw/tokenizer.RowDumper.c b/glue/ligolw/tokenizer.RowDumper.c
+index dfc97ff7..21cb6958 100644
+--- a/glue/ligolw/tokenizer.RowDumper.c
++++ b/glue/ligolw/tokenizer.RowDumper.c
+@@ -280,7 +280,7 @@ static struct PyMethodDef methods[] = {
+ 
+ 
+ PyTypeObject ligolw_RowDumper_Type = {
+-	PyObject_HEAD_INIT(NULL)
++	PyVarObject_HEAD_INIT(NULL, 0)
+ 	.tp_basicsize = sizeof(ligolw_RowDumper),
+ 	.tp_dealloc = __del__,
+ 	.tp_doc =
+diff --git a/glue/ligolw/tokenizer.Tokenizer.c b/glue/ligolw/tokenizer.Tokenizer.c
+index e5c25996..056dd32f 100644
+--- a/glue/ligolw/tokenizer.Tokenizer.c
++++ b/glue/ligolw/tokenizer.Tokenizer.c
+@@ -736,7 +736,7 @@ static struct PyGetSetDef getset[] = {
+ 
+ 
+ PyTypeObject ligolw_Tokenizer_Type = {
+-	PyObject_HEAD_INIT(NULL)
++	PyVarObject_HEAD_INIT(NULL, 0)
+ 	.tp_basicsize = sizeof(ligolw_Tokenizer),
+ 	.tp_dealloc = __del__,
+ 	.tp_doc =
+-- 
+2.41.0
+

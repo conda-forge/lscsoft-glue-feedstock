@@ -8,9 +8,14 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: a242f29537f18957dbb07e6d9d20d7ebddc86c8325d4fa9e192cfa61a7c6ffbd
+  patches:
+    # backport https://git.ligo.org/lscsoft/glue/-/merge_requests/130
+    - 0001-glue.pipeline-use-ConfigParser.patch
+    # fix C extension init
+    - 0002-glue.ligolw-fix-C-extension-object-init.patch
 
 build:
-  number: 1
+  number: 2
   ignore_run_exports:
     - m2w64-gcc-libs  # [win]
   script: {{ PYTHON }} -m pip install . -vv
