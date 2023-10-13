@@ -1,0 +1,29 @@
+From 2e7fa6d3dbfe016b8f16ac6d80a7cdd34f98f34e Mon Sep 17 00:00:00 2001
+From: "duncan.macleod" <duncan.macleod@ligo.org>
+Date: Fri, 13 Oct 2023 09:44:39 +0100
+Subject: [PATCH] glue.pipeline: use ConfigParser
+
+SafeConfigParser was renamed ConfigParser in Python 3.2, and finally
+removed in Python 3.12
+
+(cherry picked from commit e671aab8fc51f452c6c9c353d49d23cda2186eda)
+---
+ glue/pipeline.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/glue/pipeline.py b/glue/pipeline.py
+index ace9a99d..4eb62b68 100644
+--- a/glue/pipeline.py
++++ b/glue/pipeline.py
+@@ -3075,7 +3075,7 @@ class LigolwSqliteNode(SqliteNode):
+     else:
+       raise ValueError("no output xml file or database specified")
+ 
+-class DeepCopyableConfigParser(configparser.SafeConfigParser):
++class DeepCopyableConfigParser(configparser.ConfigParser):
+     """
+     The standard SafeConfigParser no longer supports deepcopy() as of python
+     2.7 (see http://bugs.python.org/issue16058). This subclass restores that
+-- 
+2.41.0
+
