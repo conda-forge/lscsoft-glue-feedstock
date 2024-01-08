@@ -1,0 +1,29 @@
+From 2057ae2f396174a35b7d07be03f5238db328055b Mon Sep 17 00:00:00 2001
+From: "duncan.macleod" <duncan.macleod@ligo.org>
+Date: Mon, 8 Jan 2024 15:52:03 +0000
+Subject: [PATCH] setup.py: skip git version info generation
+
+we already have that when building from a tarball
+---
+ setup.py | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 64ebe0ee..687c59d2 100644
+--- a/setup.py
++++ b/setup.py
+@@ -137,11 +137,6 @@ setup(
+     long_description_content_type='text/markdown',
+     url="https://docs.ligo.org/lscsoft/glue/",
+     license='GPLv2+',
+-    # build instructions
+-    cmdclass={
+-        'build_py': glue_build_py,
+-        'sdist': glue_sdist
+-    },
+     # contents
+     packages=packages,
+     scripts=scripts,
+-- 
+2.39.2
+
