@@ -35,7 +35,6 @@ requirements:
     - numpy
     - pyopenssl
     - python
-    - pyrxp
     - six
 
 test:
@@ -46,19 +45,14 @@ test:
     - test/
   imports:
     - glue
-    - glue.iterutils
     - glue.lal
-    - glue.ldbd
     - glue.pidfile  # [not win]
     - glue.pipeline
-    - glue.segmentdb
   commands:
     # check requirements
     - python -m pip check
     # run some tests
-    - python test/iterutils_verify.py
     - python test/lal_verify.py
-    - python test/test_ldbd.py  # [not win]
     - python test/test_pidfile.py  # [not win]
     - python test/test_pipeline.py
 
