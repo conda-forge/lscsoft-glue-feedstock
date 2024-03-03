@@ -1,5 +1,5 @@
 {% set name = "lscsoft-glue" %}
-{% set version = "3.0.2" %}
+{% set version = "4.0.0" %}
 
 package:
   name: {{ name }}
@@ -7,10 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b50c1e0a6eaea32554e6f21405272b3e059457f8ad5743a1b4e902dfaa545fd0
-  patches:
-    # skip re-building git_version.py
-    - 0001-setup.py-skip-git-version-info-generation.patch
+  sha256: c7250b695da1db6c6fc034598c2a0e46103273a279ea170d60c2472770edc8f5
 
 build:
   number: 0
@@ -35,7 +32,6 @@ requirements:
     - numpy
     - pyopenssl
     - python
-    - pyrxp
     - six
 
 test:
@@ -46,19 +42,14 @@ test:
     - test/
   imports:
     - glue
-    - glue.iterutils
     - glue.lal
-    - glue.ldbd
     - glue.pidfile  # [not win]
     - glue.pipeline
-    - glue.segmentdb
   commands:
     # check requirements
     - python -m pip check
     # run some tests
-    - python test/iterutils_verify.py
     - python test/lal_verify.py
-    - python test/test_ldbd.py  # [not win]
     - python test/test_pidfile.py  # [not win]
     - python test/test_pipeline.py
 
