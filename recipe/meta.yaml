@@ -2,7 +2,7 @@
 {% set version = "4.0.0" %}
 
 package:
-  name: {{ name }}
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
@@ -10,33 +10,24 @@ source:
   sha256: c7250b695da1db6c6fc034598c2a0e46103273a279ea170d60c2472770edc8f5
 
 build:
-  number: 0
-  ignore_run_exports:
-    - m2w64-gcc-libs  # [win]
+  noarch: python
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
-  build:
-    - {{ compiler('c') }}  # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
-    # extras for cross compilation
-    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
-    - python                              # [build_platform != target_platform]
   host:
-    - libpython  # [win]
     - pip
-    - python
+    - python >=3.6
     - setuptools
   run:
     - ligo-segments
     - numpy
     - pyopenssl
-    - python
+    - python >=3.6
     - six
 
 test:
   requires:
-    - matplotlib-base
     - pip
   source_files:
     - test/
