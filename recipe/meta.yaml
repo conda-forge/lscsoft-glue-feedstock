@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
   sha256: 80884ec79eec098ba30c6d7dd413601d5df399f54b9affe034f3fc48a4f5de27
 
 build:
@@ -17,18 +17,19 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
     - setuptools
   run:
     - ligo-segments
     - numpy
     - pyopenssl
-    - python >=3.6
+    - python >={{ python_min }}
     - six
 
 test:
   requires:
     - pip
+    - python {{ python_min }}
   source_files:
     - test/
   imports:
