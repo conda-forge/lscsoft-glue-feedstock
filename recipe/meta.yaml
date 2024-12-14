@@ -6,29 +6,30 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: c7250b695da1db6c6fc034598c2a0e46103273a279ea170d60c2472770edc8f5
 
 build:
   noarch: python
-  number: 1
+  number: 2
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
     - setuptools
   run:
     - ligo-segments
     - numpy
     - pyopenssl
-    - python >=3.6
+    - python >={{ python_min }}
     - six
 
 test:
   requires:
     - pip
+    - python {{ python_min }}
   source_files:
     - test/
   imports:
