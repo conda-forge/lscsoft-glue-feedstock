@@ -1,48 +1,40 @@
 {% set name = "lscsoft-glue" %}
-{% set version = "4.0.0" %}
+{% set version = "4.1.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c7250b695da1db6c6fc034598c2a0e46103273a279ea170d60c2472770edc8f5
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 80884ec79eec098ba30c6d7dd413601d5df399f54b9affe034f3fc48a4f5de27
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.6
-    - setuptools
+    - python {{ python_min }}
+    - setuptools >=61.0.0
+    - wheel
   run:
-    - ligo-segments
-    - numpy
-    - pyopenssl
-    - python >=3.6
-    - six
+    - igwn-segments
+    - python >={{ python_min }}
 
 test:
   requires:
     - pip
-  source_files:
-    - test/
-  imports:
-    - glue
-    - glue.lal
-    - glue.pidfile  # [not win]
-    - glue.pipeline
+    - python {{ python_min }}
+    - pytest
   commands:
     # check requirements
     - python -m pip check
+    - python -m pip show lscsoft-glue
     # run some tests
-    - python test/lal_verify.py
-    - python test/test_pidfile.py  # [not win]
-    - python test/test_pipeline.py
+    - python -m pytest -ra -v --pyargs glue.tests
 
 about:
   home: https://git.ligo.org/lscsoft/glue.git
@@ -60,5 +52,6 @@ about:
 extra:
   recipe-maintainers:
     - duncanmmacleod
+    - lpsinger
     - robertbruntz
     - rpfisher

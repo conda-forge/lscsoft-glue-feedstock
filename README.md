@@ -152,6 +152,7 @@ Feedstock Maintainers
 =====================
 
 * [@duncanmmacleod](https://github.com/duncanmmacleod/)
+* [@lpsinger](https://github.com/lpsinger/)
 * [@robertbruntz](https://github.com/robertbruntz/)
 * [@rpfisher](https://github.com/rpfisher/)
 
