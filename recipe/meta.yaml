@@ -18,32 +18,23 @@ requirements:
   host:
     - pip
     - python {{ python_min }}
-    - setuptools
+    - setuptools >=61.0.0
+    - wheel
   run:
-    - ligo-segments
-    - numpy
-    - pyopenssl
+    - igwn-segments
     - python >={{ python_min }}
-    - six
 
 test:
   requires:
     - pip
     - python {{ python_min }}
-  source_files:
-    - test/
-  imports:
-    - glue
-    - glue.lal
-    - glue.pidfile  # [not win]
-    - glue.pipeline
+    - pytest
   commands:
     # check requirements
     - python -m pip check
+    - python -m pip show lscsoft-glue
     # run some tests
-    - python test/lal_verify.py
-    - python test/test_pidfile.py  # [not win]
-    - python test/test_pipeline.py
+    - python -m pytest -ra -v --pyargs glue.tests
 
 about:
   home: https://git.ligo.org/lscsoft/glue.git
