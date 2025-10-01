@@ -1,5 +1,5 @@
 {% set name = "lscsoft-glue" %}
-{% set version = "4.1.0" %}
+{% set version = "4.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 80884ec79eec098ba30c6d7dd413601d5df399f54b9affe034f3fc48a4f5de27
+  sha256: 487df9085eaafe635dd62445e744017c1c90cc696be76ac6b654bd70841ae733
 
 build:
   noarch: python
